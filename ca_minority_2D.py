@@ -1,12 +1,18 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Thu Jun 21 07:26:25 2019
+
+@author: Ty
+"""
+
 import random
-import numpy as np
 
 def ca():
     # 64 Boolean - True(1) : '*'
     #            - False(0): '-'
     # Rule - each cell looks at its Moore neighborhood
     # Cell state takes on the minority state of the eight surveyed cells plus itself
-    # If there are less than 2 or more than 3 alive, the current cell is alive
+    
     
     # height and width of grid
     height = 32
@@ -14,7 +20,6 @@ def ca():
     
     # list representing the current status of 64 cells - randomly generated
     ca = [[random.randint(0,1) for i in range(width)] for j in range(height)]
-        
         
     # new cell values
     ca_new = ca
@@ -41,14 +46,7 @@ def ca():
         for i in range(0, height):
             for j in range(0, width):
                 # add up values of neighbors
-                neighbors = ca[(i - 1) % height][j] # north
-                + ca[i][(j + 1) % width] # east
-                + ca[(i + 1) % height][j] # south
-                + ca[i][(j - 1) % width] # west
-                + ca[(i - 1) % height][(j + 1) % width] # northeast
-                + ca[(i + 1) % height][(j + 1) % width] # southeast
-                + ca[(i + 1) % height][(j - 1) % width] # southwest
-                + ca[(i - 1) % height][(j - 1) % width] # northwest
+                neighbors = ca[(i - 1) % height][j] + ca[i][(j + 1) % width] + ca[(i + 1) % height][j] + ca[i][(j - 1) % width] + ca[(i - 1) % height][(j + 1) % width] + ca[(i + 1) % height][(j + 1) % width] + ca[(i + 1) % height][(j - 1) % width] + ca[(i - 1) % height][(j - 1) % width]
                 
                 # if current cell is True
                 if ca[i][j] == 1:
@@ -84,5 +82,3 @@ def ca():
 
 if __name__ == '__main__':
     ca()
-                        
-                        
